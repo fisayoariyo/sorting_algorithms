@@ -10,7 +10,6 @@ void quick_sort(int *array, size_t size);
  * @a: The first integer to swap.
  * @b: The second integer to swap.
  */
-
 void swap_ints(int *a, int *b)
 {
 	int tmp;
@@ -19,7 +18,6 @@ void swap_ints(int *a, int *b)
 	*a = *b;
 	*b = tmp;
 }
-
 
 /**
  * lomuto_partition - Order a subset of an array of integers according to
@@ -33,31 +31,30 @@ void swap_ints(int *a, int *b)
  */
 int lomuto_partition(int *array, size_t size, int left, int right)
 {
-	int *driver, up, down;
+	int *pivot, above, below;
 
-	driver = array + right;
-	for (up = down = left; down < right; down++)
+	pivot = array + right;
+	for (above = below = left; below < right; below++)
 	{
-		if (array[down] < *driver)
+		if (array[below] < *pivot)
 		{
-			if (up < down)
+			if (above < below)
 			{
-				swap_ints(array + down, array + up);
+				swap_ints(array + below, array + above);
 				print_array(array, size);
 			}
-			up++;
+			above++;
 		}
 	}
 
-	if (array[up] > *driver)
+	if (array[above] > *pivot)
 	{
-		swap_ints(array + up, driver);
+		swap_ints(array + above, pivot);
 		print_array(array, size);
 	}
 
-	return (up);
+	return (above);
 }
-
 
 /**
  * lomuto_sort - Implement the quicksort algorithm through recursion.
@@ -68,19 +65,17 @@ int lomuto_partition(int *array, size_t size, int left, int right)
  *
  * Description: Uses the Lomuto partition scheme.
  */
-
 void lomuto_sort(int *array, size_t size, int left, int right)
 {
-	int belong;
+	int part;
 
 	if (right - left > 0)
 	{
-		belong = lomuto_partition(array, size, left, right);
-		lomuto_sort(array, size, left, belong - 1);
-		lomuto_sort(array, size, belong + 1, right);
+		part = lomuto_partition(array, size, left, right);
+		lomuto_sort(array, size, left, part - 1);
+		lomuto_sort(array, size, part + 1, right);
 	}
 }
-
 
 /**
  * quick_sort - Sort an array of integers in ascending
@@ -91,7 +86,6 @@ void lomuto_sort(int *array, size_t size, int left, int right)
  * Description: Uses the Lomuto partition scheme. Prints
  *              the array after each swap of two elements.
  */
-
 void quick_sort(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
