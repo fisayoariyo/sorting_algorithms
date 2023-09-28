@@ -1,11 +1,11 @@
 #include "sort.h"
 
 /**
- * swap_ints - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
+ * exchange_ints - Exchanges two integers in our array.
+ * @a: The first integer to be exchanged
+ * @b: The second integer to be exchanged
  */
-void swap_ints(int *a, int *b)
+void exchange_ints(int *a, int *b)
 {
 	int tmp;
 
@@ -15,12 +15,12 @@ void swap_ints(int *a, int *b)
 }
 
 /**
- * shell_sort - Sort an array of integers in ascending
- *              order using the shell sort algorithm.
- * @array: An array of integers.
- * @size: The size of the array.
+ * shell_sort - This will sort an array of integers in ascending
+ *              order by using the shell sort algorithm.
+ * @array: This is an array of integers.
+ * @size: This is the size of the array.
  *
- * Description: Uses the Knuth interval sequence.
+ * Description: This uses the Knuth's interval sequence.
  */
 void shell_sort(int *array, size_t size)
 {
@@ -39,7 +39,7 @@ void shell_sort(int *array, size_t size)
 			j = i;
 			while (j >= gap && array[j - gap] > array[j])
 			{
-				swap_ints(array + j, array + (j - gap));
+				exchange_ints(array + j, array + (j - gap));
 				j -= gap;
 			}
 		}

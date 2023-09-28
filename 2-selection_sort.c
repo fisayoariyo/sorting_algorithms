@@ -1,11 +1,11 @@
 #include "sort.h"
 
 /**
- * swap_ints - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
+ * exchange_ints - Exchange the two integers in an array.
+ * @a: The first integer to be exchanged
+ * @b: The second integer to be exchanged
  */
-void swap_ints(int *a, int *b)
+void exchange_ints(int *a, int *b)
 {
 	int tmp;
 
@@ -15,12 +15,12 @@ void swap_ints(int *a, int *b)
 }
 
 /**
- * selection_sort - Sort an array of integers in ascending order
- *                  using the selection sort algorithm.
- * @array: An array of integers.
- * @size: The size of the array.
+ * selection_sort - This will sort an array of integers in ascending order
+ *                  by using the selection sort algorithm.
+ * @array: This is an array of integers.
+ * @size: This is a size of array.
  *
- * Description: Prints the array after each swap.
+ * Description: This will print the array after every exchange.
  */
 void selection_sort(int *array, size_t size)
 {
@@ -38,7 +38,7 @@ void selection_sort(int *array, size_t size)
 
 		if ((array + i) != min)
 		{
-			swap_ints(array + i, min);
+			exchange_ints(array + i, min);
 			print_array(array, size);
 		}
 	}
